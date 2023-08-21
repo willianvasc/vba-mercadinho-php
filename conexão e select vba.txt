@@ -1,0 +1,25 @@
+Public Sub isconexao()
+ Dim con    As ADODB.Connection
+ Dim rs     As ADODB.Recordset
+ Dim lSql   As String
+ 
+ Set con = New ADODB.Connection
+ Set rs = New ADODB.Recordset
+ 
+ 
+ con.ConnectionString = "DRIVER={MySQL ODBC 8.0 Unicode Driver};" _
+                              & "SERVER=127.0.0.1;" _
+                              & "DATABASE=mercadinho;" _
+                              & "UID=root;" _
+                              & "PASSWORD=;Option=3;"
+                              
+   con.Open
+   
+   lSql = "SELECT * FROM mercadinho.produtos"
+   
+   rs.Open lSql, con
+   
+   Planilha1.Range("c2").CopyFromRecordset rs
+    
+End Sub
+
